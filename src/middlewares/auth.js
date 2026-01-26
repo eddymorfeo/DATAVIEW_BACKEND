@@ -23,14 +23,10 @@ const requireAuth = (req, res, next) => {
     }
 
     const payload = verifyAccessToken(token);
-    // payload típico: { sub: userId, username, ... , iat, exp }
 
-    req.auth = payload; // lo dejamos disponible para controladores/servicios
+    req.auth = payload;
     return next();
   } catch (error) {
-    // jsonwebtoken lanza:
-    // - TokenExpiredError
-    // - JsonWebTokenError
     const isExpired = error?.name === 'TokenExpiredError';
 
     return res.status(HttpStatus.UNAUTHORIZED).json({

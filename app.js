@@ -10,7 +10,7 @@ const { notFound } = require('./src/middlewares/notFound');
 const { errorHandler } = require('./src/middlewares/errorHandler');
 
 const app = express();
-const port = Number(process.env.PORT || 3000);
+const port = Number(process.env.PORT || 3002);
 
 app.use(helmet());
 app.use(cors());
