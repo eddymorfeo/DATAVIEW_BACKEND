@@ -10,6 +10,10 @@ const { requireAuth } = require('../middlewares/auth');
 const { caseStatusRouter } = require('./caseStatusRoutes');
 const { weaponRouter } = require('./weaponRoutes');
 const { homicideRouter } = require('./homicideRoutes');
+const { requestTypeRouter } = require('./requestTypeRoutes');
+const { requestPriorityRouter } = require('./requestPriorityRoutes');
+const { requestStatusRouter } = require('./requestStatusRoutes');
+const { requestRouter } = require('./requestRoutes');
 
 const router = express.Router();
 
@@ -26,5 +30,9 @@ router.use('/user-roles', requireAuth, userRoleRouter);
 router.use('/case-status', requireAuth, caseStatusRouter);
 router.use('/weapons', requireAuth, weaponRouter);
 router.use('/homicides', requireAuth, homicideRouter);
+router.use('/request-types', requireAuth, requestTypeRouter);
+router.use('/request-priorities', requireAuth, requestPriorityRouter);
+router.use('/request-status', requireAuth, requestStatusRouter);
+router.use('/requests', requireAuth, requestRouter);
 
 module.exports = { apiRouter: router };
